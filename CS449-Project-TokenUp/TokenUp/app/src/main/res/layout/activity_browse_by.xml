@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.cs449project.BrowseByActivity">
+
+    <Button
+        android:id="@+id/button_byName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="10dp"
+        android:onClick="browseByName"
+        android:text="Browse by Name"
+        app:layout_constraintBottom_toTopOf="@+id/button_byType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_byType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:onClick="browseByType"
+        android:text="Browse by Type"
+        app:layout_constraintBottom_toTopOf="@+id/button_bySubType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_byName" />
+
+    <Button
+        android:id="@+id/button_bySubType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:onClick="browseBySubType"
+        android:text="Browse by Subtype"
+        app:layout_constraintBottom_toTopOf="@+id/button_bySet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_byType" />
+
+    <Button
+        android:id="@+id/button_bySet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:onClick="browseBySet"
+        android:text="Browse by Set"
+        app:layout_constraintBottom_toTopOf="@+id/button_byArtist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_bySubType" />
+
+    <Button
+        android:id="@+id/button_byArtist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:onClick="browseByArtist"
+        android:text="Browse by Artist"
+        app:layout_constraintBottom_toTopOf="@+id/button_byColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_bySet" />
+
+    <Button
+        android:id="@+id/button_byColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+        android:onClick="browseByColors"
+        android:text="Browse by Color"
+        app:layout_constraintBottom_toTopOf="@+id/button_byTag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_byArtist" />
+
+    <Button
+        android:id="@+id/button_byTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="145dp"
+        android:layout_marginTop="2dp"
+        android:onClick="browseByTag"
+        android:text="Browse by Tag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_byColor" />
+
+</android.support.constraint.ConstraintLayout>
