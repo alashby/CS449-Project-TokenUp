@@ -225,9 +225,6 @@ public class DatabaseAccess {
         return list;
     }
 
-
-
-
     public ArrayList<Bitmap> getImgsByColors(String colors) {
         ArrayList<Bitmap> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT ImgFile, Colors FROM Tokens ORDER BY Name, Artist, MTGSet", null);
@@ -266,13 +263,13 @@ public class DatabaseAccess {
 
     public ArrayList<Bitmap> getImgsByTag(String tag) {
         ArrayList<Bitmap> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM Tokens ORDER BY Name, Artist, MTGSet", null);
+        Cursor cursor = database.rawQuery("SELECT ImgFile, Tags FROM Tokens ORDER BY Name, Artist, MTGSet", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            String currenttags = cursor.getString(11);
+            String currenttags = cursor.getString(1);
             List<String> currenttaglist = Arrays.asList(currenttags.split(","));
             if (currenttaglist.contains(tag)) {
-                byte[] byteArray = cursor.getBlob(2);
+                byte[] byteArray = cursor.getBlob(0);
                 Bitmap img = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
                 list.add(img);
             }
@@ -282,17 +279,93 @@ public class DatabaseAccess {
         return list;
     }
 
-    public void insertToken(Token token) {
-        ContentValues values = new ContentValues();
-        values.put("Id", token.getId());
-        values.put("Name", token.getTokenName());
-        values.put("ImgFile", token.getImgFile());
-        values.put("Type", token.getType());
-        values.put("SubType", token.getSubType());
-        values.put("Set", token.getSet());
-        values.put("Artist", token.getArtist());
-        values.put("Colors", token.getColors());
-        values.put("Tags", token.getTags());
-        database.insert("Tokens", null, values);
+
+    public ArrayList<String> getIDs(String parameter, String category) {
+        if (category.equals("colors")){
+            return getIDsByColors(parameter);
+        }
+        if (category.equals("tag")){
+            return getIDsByTag(parameter);
+        }
+        category = category.substring(0, 1).toUpperCase() + category.substring(1);
+        if (category.equals("Set")){
+            category = "MTGSet";
+        }
+        String[] param = new String[] { parameter };
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Id FROM Tokens WHERE " + category + " = ? ORDER BY Name, Artist, MTGSet", param);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));;
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
     }
+
+    public ArrayList<String> getIDsByColors(String colors) {
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Id, Colors FROM Tokens ORDER BY Name, Artist, MTGSet", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String currentcombo = cursor.getString(1);
+            String currentcolors = "";
+
+            for (int i = 0; i < currentcombo.length(); i++){
+                char col = currentcombo.charAt(i);
+                switch(col) {
+                    case 'R': currentcolors += "Red/"; break;
+                    case 'G': currentcolors += "Green/"; break;
+                    case 'B': currentcolors += "Black/"; break;
+                    case 'U': currentcolors += "Blue/"; break;
+                    case 'W': currentcolors += "White/"; break;
+                    case 'A': currentcolors += "Artifact"; break;
+                    case 'C': currentcolors += "Colorless"; break;
+                }
+            }
+            if (currentcolors.charAt(currentcolors.length()-1) == '/') {
+                currentcolors = currentcolors.substring(0, currentcolors.length()-1);
+            }
+
+            if (colors.equals(currentcolors)) {
+                list.add(cursor.getString(0));
+            }
+
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<String> getIDsByTag(String tag) {
+        ArrayList<String> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT Id, Tags FROM Tokens ORDER BY Name, Artist, MTGSet", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String currenttags = cursor.getString(1);
+            List<String> currenttaglist = Arrays.asList(currenttags.split(","));
+            if (currenttaglist.contains(tag)) {
+                list.add(cursor.getString(0));
+            }
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<String> getAbilities(String id) {
+        List<String> list = new ArrayList<>();
+        String[] param = new String[] { id };
+        Cursor cursor = database.rawQuery("SELECT Abilities FROM Tokens WHERE Id = ?", param);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            String abilities = cursor.getString(0);
+            list = Arrays.asList(abilities.split("\n"));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
 }

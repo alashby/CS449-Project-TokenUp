@@ -1,5 +1,6 @@
 package com.github.cs449project;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,12 +14,14 @@ import java.util.List;
 
 public class ByFilterActivity extends AppCompatActivity {
     private ListView listView;
-
+    public static Activity byFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_by_filter);
+
+        byFilter = this;
 
         Bundle bundle = getIntent().getExtras();
         final String filter = bundle.getString("FILTER");

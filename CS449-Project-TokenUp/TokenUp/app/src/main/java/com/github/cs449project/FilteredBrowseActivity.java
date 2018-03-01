@@ -27,8 +27,6 @@ import java.util.List;
 // http://www.java2s.com/Code/Android/UI/UsingGridViewtodisplayimages.htm reference
 
 public class FilteredBrowseActivity extends AppCompatActivity {
-    private ListView listView;
-    public Integer[] idList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +39,31 @@ public class FilteredBrowseActivity extends AppCompatActivity {
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
-        ArrayList<Bitmap> imgList = new ArrayList<>();
 
-        imgList = databaseAccess.getImgs(selection, filter);
+        ArrayList<Bitmap> imgList = databaseAccess.getImgs(selection, filter);
+        final ArrayList<String> idList = databaseAccess.getIDs(selection, filter);
+
         databaseAccess.close();
 
         final GridView gridView = (GridView) findViewById(R.id.gridview);
         gridView.setAdapter(new ImageAdapter(this, imgList));
 
-
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Bitmap img = (Bitmap) parent.getItemAtPosition(position);
-                Intent intent = new Intent(FilteredBrowseActivity.this, MainActivity.class);
-
                 SelectedToken.img = img;
+                SelectedToken.id = idList.get(0);
 
-                startActivity(intent);
+
+                ByFilterActivity.byFilter.finish();
+                BrowseByActivity.browseBy.finish();
+                MainActivity.mainact.finish();
+
+                Intent mainScreen = new Intent(FilteredBrowseActivity.this, MainActivity.class);
+                startActivity(mainScreen);
+
+
+                finish();
             }
         });
     }
