@@ -83,29 +83,29 @@ public class Tokens {
     }
 
     public void incAttackers() {
-        readyTokens--;
-        attackers++;
+        if (playerTurn && readyTokens > 0) {
+            readyTokens--;
+            attackers++;
+        }
     }
 
     public void incBlockers() {
-        if (summoningSick > 0) {
+        if (!playerTurn && summoningSick > 0) {
             summoningSick--;
             tempSSick++;
+            blockers++;
         }
-        else {
+        else if (!playerTurn && readyTokens > 0) {
             readyTokens--;
+            blockers++;
         }
-        blockers++;
     }
 
     public void incReady() {
-        tapped--;
-        readyTokens++;
-    }
-
-    public void incTapped() {
-        readyTokens--;
-        tapped++;
+        if (tapped > 0) {
+            tapped--;
+            readyTokens++;
+        }
     }
 
     public void decTotal() {
@@ -135,8 +135,10 @@ public class Tokens {
     }
 
     public void decAttackers() {
-        attackers--;
-        readyTokens++;
+        if (attackers > 0) {
+            attackers--;
+            readyTokens++;
+        }
     }
 
     public void decBlockers() {
@@ -145,22 +147,47 @@ public class Tokens {
             tempSSick--;
             summoningSick++;
         }
-        else {
+        else if (blockers > 0){
             blockers--;
             readyTokens++;
         }
     }
 
+    public void kill(String tokenState) {
+        switch(tokenState) {
+            case "attackers":
+                if (attackers > 0) { attackers--; totalTokens--; } break;
+            case "blockers":
+                if (blockers > 0) { blockers--; totalTokens--; } break;
+            case "ready":
+                if (readyTokens > 0) { readyTokens--; totalTokens--; } break;
+            case "ssick":
+                if (summoningSick > 0) { summoningSick--; totalTokens--; } break;
+            case "tapped":
+                if (tapped > 0) { tapped--; totalTokens--; } break;
+        }
+    }
 
+    public void tap(String tokenState) {
+        switch (tokenState) {
+            case "attackers":
+                if (attackers > 0) { attackers--; tapped++; } break;
+            case "blockers":
+                if (blockers > 0) { blockers--; tapped++; } break;
+            case "ready":
+                if (readyTokens > 0) { readyTokens--; tapped++; } break;
+        }
+    }
 
     public void opponentTurn() {
         playerTurn = false;
 
-        if (!SelectedToken.abilities.contains("Viligance")) {
-            tapped += attackers;
+        if (SelectedToken.abilities.contains("Vigilance")) {
+            readyTokens += attackers;
+
         }
         else {
-            readyTokens += attackers;
+            tapped += attackers;
         }
         attackers = 0;
 

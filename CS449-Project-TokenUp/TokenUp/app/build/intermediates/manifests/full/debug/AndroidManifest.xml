@@ -17,6 +17,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.github.cs449project.MainActivity" >
             <intent-filter>
@@ -28,6 +29,7 @@
         <activity android:name="com.github.cs449project.BrowseByActivity" />
         <activity android:name="com.github.cs449project.ByFilterActivity" />
         <activity android:name="com.github.cs449project.FilteredBrowseActivity" />
+        <activity android:name="com.github.cs449project.SetTotalActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

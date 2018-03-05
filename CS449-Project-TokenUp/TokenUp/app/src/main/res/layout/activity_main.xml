@@ -7,8 +7,75 @@
     tools:context="com.github.cs449project.MainActivity">
 
 
+    <LinearLayout
+        android:id="@+id/invisiLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="clearMenus" />
+
+        <LinearLayout
+            android:id="@+id/invisistatebuttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="419dp">
+
+            <Button
+                android:id="@+id/invisitapbutton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@android:color/background_dark"
+                android:text="@string/zero"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@android:color/white"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/invisitotalbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
 
+            <Button
+                android:id="@+id/invisitotal"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@android:color/darker_gray"
+                android:text="@string/totalzero"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -20,11 +87,173 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/background"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+        <LinearLayout
+            android:id="@+id/expandmenus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            android:weightSum="5" android:baselineAligned="false">
+
+            <LinearLayout
+                android:id="@+id/attackersMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/button_attackerInc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/inc" />
+
+                <Button
+                    android:id="@+id/button_attackerDec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/dec" />
+
+                <Button
+                    android:id="@+id/button_attackerDie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/die" />
+
+                <Button
+                    android:id="@+id/button_attackerTap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/tap" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blockersMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/button_blockerInc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/inc" />
+
+                <Button
+                    android:id="@+id/button_blockerDec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/dec" />
+
+                <Button
+                    android:id="@+id/button_blockerDie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/die" />
+
+                <Button
+                    android:id="@+id/button_blockerTap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/tap" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/readyMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/button_readyInc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/inc" />
+
+                <Button
+                    android:id="@+id/button_readyDec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/dec" />
+
+                <Button
+                    android:id="@+id/button_readyDie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/die" />
+
+                <Button
+                    android:id="@+id/button_readyTap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/tap" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sSickMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="bottom|center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/button_sSickDie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/die" />
+
+                <Button
+                    android:id="@+id/button_sSickTap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/tap" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tappedMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="bottom|center"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <Button
+                    android:id="@+id/button_tappedDie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/die" />
+
+                <Button
+                    android:id="@+id/button_tappedUntap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="buttonClick"
+                    android:text="@string/untap" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/statebuttons"
@@ -44,9 +273,11 @@
                 android:layout_weight="1"
 
                 android:background="@android:color/background_dark"
-                android:text="0"
+                android:onClick="expandAttackers"
+                android:text="@string/zero"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_attack"/>
 
             <Button
                 android:id="@+id/button_Blockers"
@@ -56,9 +287,11 @@
                 android:layout_weight="1"
 
                 android:background="@android:color/background_dark"
-                android:text="0"
+                android:onClick="expandBlockers"
+                android:text="@string/zero"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_block"/>
 
             <Button
                 android:id="@+id/button_Ready"
@@ -68,9 +301,11 @@
                 android:layout_weight="1"
 
                 android:background="@android:color/background_dark"
-                android:text="0"
+                android:onClick="expandReady"
+                android:text="@string/zero"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_ready"/>
 
             <Button
                 android:id="@+id/button_summoningSick"
@@ -80,9 +315,11 @@
                 android:layout_weight="1"
 
                 android:background="@android:color/background_dark"
-                android:text="0"
+                android:onClick="expandSSick"
+                android:text="@string/zero"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_summoning_sick"/>
 
             <Button
                 android:id="@+id/button_Tapped"
@@ -92,9 +329,11 @@
                 android:layout_weight="1"
 
                 android:background="@android:color/background_dark"
-                android:text="0"
+                android:onClick="expandTapped"
+                android:text="@string/zero"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_tapped"/>
         </LinearLayout>
 
         <LinearLayout
@@ -103,6 +342,7 @@
             android:layout_height="wrap_content"
             android:gravity="bottom|center"
             android:orientation="horizontal"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -119,7 +359,7 @@
 
                 android:background="@android:color/darker_gray"
                 android:onClick="decTotal"
-                android:text="-"
+                android:text="@string/dec"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <Button
@@ -130,7 +370,8 @@
 
                 android:layout_weight=".8"
                 android:background="@android:color/darker_gray"
-                android:text="Total: 0"
+                android:onClick="setTotal"
+                android:text="@string/totalzero"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <Button
@@ -143,12 +384,41 @@
 
                 android:background="@android:color/darker_gray"
                 android:onClick="incTotal"
-                android:text="+"
+                android:text="@string/inc"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button_newUpkeep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/button_passTurn"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/button_passTurn"
+            android:onClick="newUpkeep"
+            android:text="@string/newupkeep"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/button_passTurn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:onClick="passTurn"
+            android:text="@string/passturn"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+
 
 
 </android.support.constraint.ConstraintLayout>

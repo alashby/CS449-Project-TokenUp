@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Token Up!</string>
+    <string name="inc">+</string>
+    <string name="dec">-</string>
+    <string name="die">💀</string>
+    <string name="tap">Tap</string>
+    <string name="untap">Untap</string>
+    <string name="zero">0</string>
+    <string name="totalzero">Total: 0</string>
+    <string name="passturn">Pass Turn</string>
+    <string name="newupkeep">New Upkeep</string>
 </resources>

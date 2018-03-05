@@ -52,7 +52,7 @@ public class FilteredBrowseActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Bitmap img = (Bitmap) parent.getItemAtPosition(position);
                 SelectedToken.img = img;
-                SelectedToken.id = idList.get(0);
+                SelectedToken.id = idList.get(position);
 
 
                 ByFilterActivity.byFilter.finish();
@@ -60,6 +60,9 @@ public class FilteredBrowseActivity extends AppCompatActivity {
                 MainActivity.mainact.finish();
 
                 Intent mainScreen = new Intent(FilteredBrowseActivity.this, MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("SETTOTAL", false);
+                mainScreen.putExtras(bundle);
                 startActivity(mainScreen);
 
 

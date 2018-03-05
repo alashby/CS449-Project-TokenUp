@@ -65,13 +65,11 @@ public class DatabaseAccess {
 
     public List<String> getNames() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT Name FROM Tokens ORDER BY Name", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT Name FROM Tokens ORDER BY Name", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String name = cursor.getString(0);
-            if (!list.contains(name)) {
-                list.add(name);
-            }
+            list.add(name);
             cursor.moveToNext();
         }
         cursor.close();
@@ -80,13 +78,11 @@ public class DatabaseAccess {
 
     public List<String> getTypes() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT Type FROM Tokens ORDER BY Type", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT Type FROM Tokens ORDER BY Type", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String type = cursor.getString(0);
-            if (!list.contains(type)) {
-                list.add(type);
-            }
+            list.add(type);
             cursor.moveToNext();
         }
         cursor.close();
@@ -95,13 +91,11 @@ public class DatabaseAccess {
 
     public List<String> getSubTypes() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT SubType FROM Tokens ORDER BY SubType", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT SubType FROM Tokens ORDER BY SubType", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String subtype = cursor.getString(0);
-            if (!list.contains(subtype)) {
-                list.add(subtype);
-            }
+            list.add(subtype);
             cursor.moveToNext();
         }
         cursor.close();
@@ -110,13 +104,11 @@ public class DatabaseAccess {
 
     public List<String> getSets() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT MTGSet FROM Tokens ORDER BY MTGSet", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT MTGSet FROM Tokens ORDER BY MTGSet", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String set = cursor.getString(0);
-            if (!list.contains(set)) {
-                list.add(set);
-            }
+            list.add(set);
             cursor.moveToNext();
         }
         cursor.close();
@@ -125,13 +117,11 @@ public class DatabaseAccess {
 
     public List<String> getArtists() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT Artist FROM Tokens ORDER BY Artist", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT Artist FROM Tokens ORDER BY Artist", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String artist = cursor.getString(0);
-            if (!list.contains(artist)) {
-                list.add(artist);
-            }
+            list.add(artist);
             cursor.moveToNext();
         }
         cursor.close();
@@ -140,7 +130,7 @@ public class DatabaseAccess {
 
     public List<String> getColors() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT Colors FROM Tokens ORDER BY Colors", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT Colors FROM Tokens ORDER BY Colors", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String colorcombo = cursor.getString(0);
@@ -165,9 +155,7 @@ public class DatabaseAccess {
             if (colors.charAt(colors.length()-1) == '/') {
                 colors = colors.substring(0, colors.length()-1);
             }
-            if (!list.contains(colors)) {
-                list.add(colors);
-            }
+            list.add(colors);
             cursor.moveToNext();
         }
         cursor.close();
@@ -177,16 +165,14 @@ public class DatabaseAccess {
 
     public List<String> getTags() {
         List<String> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT Tags FROM Tokens ORDER BY Tags", null);
+        Cursor cursor = database.rawQuery("SELECT DISTINCT Tags FROM Tokens ORDER BY Tags", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             String tags = cursor.getString(0);
             if (tags.length() > 0) {
                 List<String> taglist = Arrays.asList(tags.split(","));
                 for (int i = 0; i < taglist.size(); i++) {
-                    if (!list.contains(taglist.get(i))) {
-                        list.add(taglist.get(i));
-                    }
+                    list.add(taglist.get(i));
                 }
             }
             cursor.moveToNext();

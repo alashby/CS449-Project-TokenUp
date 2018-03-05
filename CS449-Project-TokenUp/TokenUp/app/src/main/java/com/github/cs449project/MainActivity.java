@@ -1,30 +1,34 @@
 package com.github.cs449project;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.io.File;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseAccess databaseAccess;
     public static Activity mainact;
 
-    Tokens tokens = new Tokens();
+    Tokens tokens;
+    int total;
+    int attackers;
+    int blockers;
+    int ready;
+    int ssick;
+    int tapped;
 
 
     @Override
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mainact = this;
 
         ImageView imageView = (ImageView) findViewById(R.id.background);
+        tokens = new Tokens();
 
         if (SelectedToken.img != null) {
             enableButtons();
@@ -48,6 +53,17 @@ public class MainActivity extends AppCompatActivity {
             SelectedToken.abilities = databaseAccess.getAbilities(SelectedToken.id);
 
             databaseAccess.close();
+
+            Bundle bundle = getIntent().getExtras();
+            if (bundle.getBoolean("SETTOTAL")) {
+                tokens.setTotalTokens(bundle.getInt("TOTAL"));
+                tokens.setAttackers(bundle.getInt("ATTACKERS"));
+                tokens.setBlockers(bundle.getInt("BLOCKERS"));
+                tokens.setReadyTokens(bundle.getInt("READY"));
+                tokens.setSummoningSick(bundle.getInt("SSICK"));
+                tokens.setTapped(bundle.getInt("TAPPED"));
+                updateText();
+            }
         }
         else {
             disableButtons();
@@ -75,42 +91,171 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void setTotal (View view) {
+        Intent activitySetTotal = new Intent(MainActivity.this, SetTotalActivity.class);
+        startActivity(activitySetTotal);
+    }
+
     private void disableButtons() {
-        Button incTotalbtn = (Button)findViewById(R.id.button_incTotal);
+        Button incTotalbtn = findViewById(R.id.button_incTotal);
         incTotalbtn.setEnabled(false);
-        Button decTotalbtn = (Button)findViewById(R.id.button_decTotal);
+        Button decTotalbtn = findViewById(R.id.button_decTotal);
         decTotalbtn.setEnabled(false);
+        Button newUpkeepbtn = findViewById(R.id.button_newUpkeep);
+        newUpkeepbtn.setEnabled(false);
+        Button passTurnbtn = findViewById(R.id.button_passTurn);
+        passTurnbtn.setEnabled(false);
+        Button totalbtn = findViewById(R.id.button_Total);
+        totalbtn.setEnabled(false);
     }
 
     private void enableButtons() {
-        Button incTotalbtn = (Button)findViewById(R.id.button_incTotal);
+        Button incTotalbtn = findViewById(R.id.button_incTotal);
         incTotalbtn.setEnabled(true);
-        Button decTotalbtn = (Button)findViewById(R.id.button_decTotal);
+        Button decTotalbtn = findViewById(R.id.button_decTotal);
         decTotalbtn.setEnabled(true);
+        Button newUpkeepbtn = findViewById(R.id.button_newUpkeep);
+        newUpkeepbtn.setEnabled(true);
+        Button passTurnbtn = findViewById(R.id.button_passTurn);
+        passTurnbtn.setEnabled(true);
+        Button totalbtn = findViewById(R.id.button_Total);
+        totalbtn.setEnabled(true);
     }
 
     public void updateText() {
-        TextView totaltext=(TextView)findViewById(R.id.button_Total);
+        TextView totaltext=findViewById(R.id.button_Total);
         totaltext.setText("Total: "+tokens.getTotalTokens());
 
-        TextView ssicktext=(TextView)findViewById(R.id.button_summoningSick);
+        TextView attackerstext = findViewById(R.id.button_Attackers);
+        attackerstext.setText(Integer.toString(tokens.getAttackers()));
+
+        TextView blockerstext = findViewById(R.id.button_Blockers);
+        blockerstext.setText(Integer.toString(tokens.getBlockers()));
+
+        TextView readytext = findViewById(R.id.button_Ready);
+        readytext.setText(Integer.toString(tokens.getReadyTokens()));
+
+        TextView ssicktext = findViewById(R.id.button_summoningSick);
         ssicktext.setText(Integer.toString(tokens.getSummoningSick()));
 
-        TextView readytext=findViewById(R.id.button_Ready);
-        readytext.setText(Integer.toString(tokens.getReadyTokens()));
+        TextView tappedtext = findViewById(R.id.button_Tapped);
+        tappedtext.setText(Integer.toString(tokens.getTapped()));
     }
 
     public void incTotal(View view) {
+        clearMenus(view);
         tokens.incTotal();
         updateText();
     }
 
     public void decTotal(View view) {
+        clearMenus(view);
         tokens.decTotal();
         updateText();
     }
 
+    public void newUpkeep(View view) {
+        clearMenus(view);
+        tokens.newUpkeep();
+        updateText();
+    }
 
+    public void passTurn(View view) {
+        clearMenus(view);
+        tokens.opponentTurn();
+        updateText();
+    }
+
+public void buttonClick(View view) {
+        switch(view.getId()) {
+            case R.id.button_attackerInc:
+                tokens.incAttackers(); break;
+            case R.id.button_attackerDec:
+                tokens.decAttackers(); break;
+            case R.id.button_attackerDie:
+                tokens.kill("attackers"); break;
+            case R.id.button_attackerTap:
+                tokens.tap("attackers"); break;
+
+            case R.id.button_blockerInc:
+                tokens.incBlockers(); break;
+            case R.id.button_blockerDec:
+                tokens.decBlockers(); break;
+            case R.id.button_blockerDie:
+                tokens.kill("blockers"); break;
+            case R.id.button_blockerTap:
+                tokens.tap("blockers"); break;
+
+            case R.id.button_readyInc:
+                tokens.incReady(); break;
+            case R.id.button_readyDec:
+                tokens.tap("ready"); break;
+            case R.id.button_readyDie:
+                tokens.kill("ready"); break;
+            case R.id.button_readyTap:
+                tokens.tap("ready"); break;
+
+            case R.id.button_sSickDie:
+                tokens.kill("ssick"); break;
+            case R.id.button_sSickTap:
+                tokens.tap("ssick"); break;
+
+            case R.id.button_tappedDie:
+                tokens.kill("tapped"); break;
+            case R.id.button_tappedUntap:
+                tokens.incReady(); break;
+        }
+
+        updateText();
+}
+
+    public void expandAttackers(View view) {
+        clearMenus(view);
+        View attackersMenu = findViewById(R.id.attackersMenu);
+        attackersMenu.setVisibility(View.VISIBLE);
+    }
+
+    public void expandBlockers(View view) {
+        clearMenus(view);
+        View blockersMenu = findViewById(R.id.blockersMenu);
+        blockersMenu.setVisibility(View.VISIBLE);
+    }
+
+    public void expandReady(View view) {
+        clearMenus(view);
+        View readyMenu = findViewById(R.id.readyMenu);
+        readyMenu.setVisibility(View.VISIBLE);
+    }
+
+    public void expandSSick(View view) {
+        clearMenus(view);
+        View sSickMenu = findViewById(R.id.sSickMenu);
+        sSickMenu.setVisibility(View.VISIBLE);
+    }
+
+    public void expandTapped(View view) {
+        clearMenus(view);
+        View tappedMenu = findViewById(R.id.tappedMenu);
+        tappedMenu.setVisibility(View.VISIBLE);
+    }
+
+
+    public void clearMenus(View view) {
+        View attackersMenu = findViewById(R.id.attackersMenu);
+        attackersMenu.setVisibility(View.INVISIBLE);
+
+        View blockersMenu = findViewById(R.id.blockersMenu);
+        blockersMenu.setVisibility(View.INVISIBLE);
+
+        View readyMenu = findViewById(R.id.readyMenu);
+        readyMenu.setVisibility(View.INVISIBLE);
+
+        View sSickMenu = findViewById(R.id.sSickMenu);
+        sSickMenu.setVisibility(View.INVISIBLE);
+
+        View tappedMenu = findViewById(R.id.tappedMenu);
+        tappedMenu.setVisibility(View.INVISIBLE);
+    }
 
 
 }

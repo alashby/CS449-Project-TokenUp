@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.cs449project.SetTotalActivity"
+    android:gravity="center">
+    <RelativeLayout
+        android:id="@+id/dialoglayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/text_Total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/text_sSick"
+            android:layout_alignRight="@id/text_sSick"
+            android:gravity="center"
+            android:text="Total: "
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/text_dialogTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/text_Total"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <TextView
+            android:id="@+id/text_Attackers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogAtkInc"
+            android:layout_alignLeft="@id/text_sSick"
+            android:layout_alignRight="@id/text_sSick"
+            android:layout_alignTop="@+id/button_dialogAtkInc"
+            android:layout_below="@+id/text_Total"
+            android:gravity="center"
+            android:text="Attackers: " />
+
+        <Button
+            android:id="@+id/button_dialogAtkInc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_Total"
+            android:layout_toRightOf="@+id/text_dialogAttackers"
+            android:onClick="incDialogAttackers"
+            android:text="@string/inc" />
+
+        <Button
+            android:id="@+id/button_dialogAtkDec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_Total"
+            android:layout_toRightOf="@+id/text_Attackers"
+            android:onClick="decDialogAttackers"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_dialogAttackers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_Total"
+            android:layout_alignBottom="@id/button_dialogAtkInc"
+            android:layout_alignTop="@+id/button_dialogAtkInc"
+            android:layout_toRightOf="@+id/button_dialogAtkDec"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <TextView
+            android:id="@+id/text_Blockers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogBlkInc"
+            android:layout_alignLeft="@id/text_sSick"
+            android:layout_alignRight="@id/text_sSick"
+            android:layout_alignTop="@+id/button_dialogBlkInc"
+            android:layout_below="@+id/text_Attackers"
+            android:gravity="center"
+            android:text="Blockers: " />
+
+        <Button
+            android:id="@+id/button_dialogBlkInc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogAtkInc"
+            android:layout_toRightOf="@+id/text_dialogBlockers"
+            android:onClick="incDialogBlockers"
+            android:text="@string/inc" />
+
+        <Button
+            android:id="@+id/button_dialogBlkDec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogAtkDec"
+            android:layout_toRightOf="@+id/text_Blockers"
+            android:onClick="decDialogBlockers"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_dialogBlockers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogBlkInc"
+            android:layout_alignTop="@+id/button_dialogBlkInc"
+            android:layout_toRightOf="@+id/button_dialogBlkDec"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <TextView
+            android:id="@+id/text_Ready"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogRdyInc"
+            android:layout_alignLeft="@id/text_sSick"
+            android:layout_alignRight="@id/text_sSick"
+            android:layout_alignTop="@+id/button_dialogRdyInc"
+            android:layout_below="@+id/text_Blockers"
+            android:gravity="center"
+            android:text="Ready: " />
+
+        <Button
+            android:id="@+id/button_dialogRdyInc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogBlkInc"
+            android:layout_toRightOf="@+id/text_dialogReady"
+            android:onClick="incDialogReady"
+            android:text="@string/inc" />
+
+        <Button
+            android:id="@+id/button_dialogRdyDec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogBlkDec"
+            android:layout_toRightOf="@+id/text_Ready"
+            android:onClick="decDialogReady"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_dialogReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogRdyInc"
+            android:layout_alignTop="@+id/button_dialogRdyInc"
+            android:layout_toRightOf="@+id/button_dialogRdyDec"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <TextView
+            android:id="@+id/text_sSick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogSckInc"
+            android:layout_alignTop="@+id/button_dialogSckInc"
+            android:layout_below="@+id/text_Ready"
+            android:gravity="center"
+            android:text="Summoning Sick: " />
+
+        <Button
+            android:id="@+id/button_dialogSckInc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogRdyInc"
+            android:layout_toRightOf="@+id/text_dialogSSick"
+            android:onClick="incDialogSSick"
+            android:text="@string/inc" />
+
+        <Button
+            android:id="@+id/button_dialogSckDec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogRdyDec"
+            android:layout_toRightOf="@+id/text_sSick"
+            android:onClick="decDialogSSick"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_dialogSSick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogSckInc"
+            android:layout_alignTop="@+id/button_dialogSckInc"
+            android:layout_toRightOf="@+id/button_dialogSckDec"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <TextView
+            android:id="@+id/text_Tapped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogTpdInc"
+            android:layout_alignLeft="@id/text_sSick"
+            android:layout_alignRight="@id/text_sSick"
+            android:layout_alignTop="@+id/button_dialogTpdInc"
+            android:layout_below="@+id/text_sSick"
+            android:gravity="center"
+            android:text="Tapped: " />
+
+        <Button
+            android:id="@+id/button_dialogTpdInc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogSckInc"
+            android:layout_toRightOf="@+id/text_dialogTapped"
+            android:onClick="incDialogTapped"
+            android:text="@string/inc" />
+
+        <Button
+            android:id="@+id/button_dialogTpdDec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogSckDec"
+            android:layout_toRightOf="@+id/text_Tapped"
+            android:onClick="decDialogTapped"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_dialogTapped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/button_dialogTpdInc"
+            android:layout_alignTop="@+id/button_dialogTpdInc"
+            android:layout_toRightOf="@+id/button_dialogTpdDec"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <Button
+            android:id="@+id/button_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogTpdDec"
+            android:layout_toRightOf="@id/text_Tapped"
+            android:onClick="confirm"
+            android:text="Confirm" />
+
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogTpdInc"
+            android:layout_toRightOf="@id/button_confirm"
+            android:onClick="cancel"
+            android:text="Cancel" />
+
+    </RelativeLayout>
+</android.widget.RelativeLayout>
