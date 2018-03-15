@@ -17,19 +17,34 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.github.cs449project.MainActivity" >
+        <activity
+            android:name="com.github.cs449project.MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.github.cs449project.BrowseByActivity" />
-        <activity android:name="com.github.cs449project.ByFilterActivity" />
-        <activity android:name="com.github.cs449project.FilteredBrowseActivity" />
-        <activity android:name="com.github.cs449project.SetTotalActivity" />
+        <activity
+            android:name="com.github.cs449project.BrowseByActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.github.cs449project.ByFilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.github.cs449project.FilteredBrowseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.github.cs449project.SetTotalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.github.cs449project.CreateEffectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.github.cs449project.SearchActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="android.support.VERSION"

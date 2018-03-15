@@ -9,4 +9,30 @@
     <string name="totalzero">Total: 0</string>
     <string name="passturn">Pass Turn</string>
     <string name="newupkeep">New Upkeep</string>
+
+    <string-array name="sets_array">
+        <item>Aether Revolt</item>
+        <item>Amonkhet</item>
+        <item>Archenemy: Nicol Bolas</item>
+        <item>Commander 2016</item>
+        <item>Commander 2017</item>
+        <item>Commander Anthology</item>
+        <item>Duel Decks: Magic vs. Might</item>
+        <item>Duel Decks: Merfolk vs. Goblins</item>
+        <item>Hour of Devastation</item>
+        <item>Iconic Masters</item>
+        <item>Ixalan</item>
+        <item>Kaladesh</item>
+        <item>Modern Masters 2017</item>
+        <item>Planechase Anthology</item>
+        <item>Rivals of Ixalan</item>
+        <item>Unstable</item>
+    </string-array>
+
+    <string-array name="search_array">
+        <item> </item>
+        <item>AND</item>
+        <item>OR</item>
+        <item>NOT</item>
+    </string-array>
 </resources>

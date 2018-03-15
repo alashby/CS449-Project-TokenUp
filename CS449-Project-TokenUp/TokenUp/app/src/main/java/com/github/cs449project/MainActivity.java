@@ -17,18 +17,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.support.v4.app.Fragment;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseAccess databaseAccess;
     public static Activity mainact;
 
     Tokens tokens;
-    int total;
-    int attackers;
-    int blockers;
-    int ready;
-    int ssick;
-    int tapped;
 
 
     @Override
@@ -53,17 +50,6 @@ public class MainActivity extends AppCompatActivity {
             SelectedToken.abilities = databaseAccess.getAbilities(SelectedToken.id);
 
             databaseAccess.close();
-
-            Bundle bundle = getIntent().getExtras();
-            if (bundle.getBoolean("SETTOTAL")) {
-                tokens.setTotalTokens(bundle.getInt("TOTAL"));
-                tokens.setAttackers(bundle.getInt("ATTACKERS"));
-                tokens.setBlockers(bundle.getInt("BLOCKERS"));
-                tokens.setReadyTokens(bundle.getInt("READY"));
-                tokens.setSummoningSick(bundle.getInt("SSICK"));
-                tokens.setTapped(bundle.getInt("TAPPED"));
-                updateText();
-            }
         }
         else {
             disableButtons();
@@ -239,6 +225,11 @@ public void buttonClick(View view) {
         tappedMenu.setVisibility(View.VISIBLE);
     }
 
+    public void expandEffects(View view) {
+        clearMenus(view);
+        View effectsFragment = findViewById(R.id.effectsLayout);
+        effectsFragment.setVisibility(View.VISIBLE);
+    }
 
     public void clearMenus(View view) {
         View attackersMenu = findViewById(R.id.attackersMenu);
@@ -257,5 +248,38 @@ public void buttonClick(View view) {
         tappedMenu.setVisibility(View.INVISIBLE);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        if (getIntent().hasExtra("CREATEEFFECT")) {
+            Bundle bundle = getIntent().getExtras();
+            ArrayList<String> keywords = bundle.getStringArrayList("KEYWORDS");
+            int numAffected = bundle.getInt("NUMAFFECTED");
+            String descstr = bundle.getString("DESCSTR");
+            String srcstr = bundle.getString("SRCSTR");
+
+            getIntent().removeExtra("CREATEEFFECT");
+
+            EffectsFragment effectsfrag = (EffectsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_effects);
+            Effect effect = new Effect(keywords, numAffected, descstr, srcstr);
+            effectsfrag.addEffect(effect);
+        }
+
+        if (getIntent().hasExtra("SETTOTAL")) {
+            Bundle bundle = getIntent().getExtras();
+            tokens.setTotalTokens(bundle.getInt("TOTAL"));
+            tokens.setAttackers(bundle.getInt("ATTACKERS"));
+            tokens.setBlockers(bundle.getInt("BLOCKERS"));
+            tokens.setReadyTokens(bundle.getInt("READY"));
+            tokens.setSummoningSick(bundle.getInt("SSICK"));
+            tokens.setTapped(bundle.getInt("TAPPED"));
+
+            getIntent().removeExtra("SETTOTAL");
+
+            updateText();
+        }
+    }
 
 }

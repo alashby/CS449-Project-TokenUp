@@ -393,7 +393,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/button_effects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:onClick="expandEffects"
+            android:text="Effects" />
 
         <Button
             android:id="@+id/button_newUpkeep"
@@ -416,9 +426,27 @@
             android:text="@string/passturn"
             android:textSize="10sp" />
 
+
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/effectsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
+        <fragment
+            android:id="@+id/fragment_effects"
+            android:name="com.github.cs449project.EffectsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            tools:layout="@layout/fragment_effects">
+
+        </fragment>
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

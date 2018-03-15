@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.cs449project.CreateEffectActivity">
+
+    <TextView
+        android:id="@+id/text_newEffectHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Create New Effect"
+        android:textAppearance="@style/AppTheme.ActionBar.TitleText" />
+
+    <TableLayout
+        android:id="@+id/keywords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/text_newEffectHeader">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkbox_deathtouch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deathtouch" />
+
+            <CheckBox
+                android:id="@+id/checkbox_doubleStrike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Double Strike" />
+
+            <CheckBox
+                android:id="@+id/checkbox_firstStrike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Strike" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkbox_fear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fear" />
+
+            <CheckBox
+                android:id="@+id/checkbox_flying"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flying" />
+
+            <CheckBox
+                android:id="@+id/checkbox_haste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Haste" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkbox_hexproof"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hexproof" />
+
+            <CheckBox
+                android:id="@+id/checkbox_indestructible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Indestructible" />
+
+            <CheckBox
+                android:id="@+id/checkbox_lifelink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lifelink" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkbox_menace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menace" />
+
+            <CheckBox
+                android:id="@+id/checkbox_reach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reach" />
+
+            <CheckBox
+                android:id="@+id/checkbox_shroud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shroud" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkbox_trample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trample" />
+
+            <CheckBox
+                android:id="@+id/checkbox_vigilance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vigilance" />
+
+        </TableRow>
+    </TableLayout>
+
+
+    <LinearLayout
+        android:id="@+id/otherslayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/keywords"
+        android:layout_below="@id/keywords"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkbox_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other: "/>
+
+        <EditText
+            android:id="@+id/input_otherKeyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/protectionlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/keywords"
+        android:layout_below="@id/otherslayout"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkbox_protection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Protection from: "/>
+
+        <EditText
+            android:id="@+id/input_protectionFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Color, Player, Type, etc"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/counterslayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/keywords"
+        android:layout_below="@id/protectionlayout"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkbox_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="toggleCounterBtns"
+            android:text="Counter (P/T): " />
+
+        <Button
+            android:id="@+id/button_powerDec"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="decPower"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <Button
+            android:id="@+id/button_powerInc"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="incPower"
+            android:text="@string/inc" />
+
+        <TextView
+            android:id="@+id/text_slash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="/" />
+
+        <Button
+            android:id="@+id/button_toughnessDec"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="decToughness"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_toughness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <Button
+            android:id="@+id/button_toughnessInc"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="incToughness"
+            android:text="@string/inc" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/numlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/counterslayout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_numAffected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Number Affected: " />
+
+        <RadioButton
+            android:id="@+id/button_allAffected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="disableNumAffectedBtns"
+            android:text="All" />
+
+        <RadioButton
+            android:id="@+id/button_numAffected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="enableNumAffectedBtns"/>
+
+        <Button
+            android:id="@+id/button_numDec"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="decNumAffected"
+            android:text="@string/dec" />
+
+        <TextView
+            android:id="@+id/text_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/zero" />
+
+        <Button
+            android:id="@+id/button_numInc"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:onClick="incNumAffected"
+            android:text="@string/inc" />
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/text_effectDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/input_effectDesc"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@id/input_effectDesc"
+        android:layout_below="@id/numlayout"
+        android:gravity="center"
+        android:text="Description (optional): " />
+
+    <EditText
+        android:id="@+id/input_effectDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/numlayout"
+        android:layout_toRightOf="@+id/text_effectDesc"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/text_effectSrc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/input_effectSrc"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@id/input_effectSrc"
+        android:layout_below="@id/text_effectDesc"
+        android:gravity="center"
+        android:text="Source Card (optional):"/>
+
+
+    <EditText
+        android:id="@+id/input_effectSrc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_effectDesc"
+        android:layout_toRightOf="@+id/text_effectSrc"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <RelativeLayout
+        android:id="@+id/dialoglayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_effectSrc"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogTpdDec"
+            android:layout_toRightOf="@id/text_Tapped"
+            android:onClick="confirm"
+            android:text="Confirm" />
+
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_dialogTpdInc"
+            android:layout_toRightOf="@id/button_confirm"
+            android:onClick="cancel"
+            android:text="Cancel" />
+
+
+    </RelativeLayout>
+
+</android.widget.RelativeLayout>

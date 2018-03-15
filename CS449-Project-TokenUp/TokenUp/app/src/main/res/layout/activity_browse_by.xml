@@ -7,17 +7,30 @@
     tools:context="com.github.cs449project.BrowseByActivity">
 
     <Button
-        android:id="@+id/button_byName"
+        android:id="@+id/button_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:layout_marginTop="10dp"
+        android:onClick="search"
+        android:text="Search"
+        app:layout_constraintBottom_toTopOf="@+id/button_byName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_byName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
         android:onClick="browseByName"
         android:text="Browse by Name"
         app:layout_constraintBottom_toTopOf="@+id/button_byType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/button_search" />
 
     <Button
         android:id="@+id/button_byType"

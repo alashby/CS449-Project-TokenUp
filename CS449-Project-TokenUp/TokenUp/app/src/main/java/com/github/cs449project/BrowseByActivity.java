@@ -17,6 +17,11 @@ public class BrowseByActivity extends AppCompatActivity {
         browseBy = this;
     }
 
+    public void search(View view) {
+        Intent activitySearch = new Intent(BrowseByActivity.this, SearchActivity.class);
+        startActivity(activitySearch);
+    }
+
     public void browseByName(View view) {
         Intent activityByName = new Intent(BrowseByActivity.this, ByFilterActivity.class);
 

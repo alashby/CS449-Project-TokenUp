@@ -11,17 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BrowseByActivity" />
-        <activity android:name=".ByFilterActivity" />
-        <activity android:name=".FilteredBrowseActivity" />
-        <activity android:name=".SetTotalActivity"></activity>
+        <activity
+            android:name=".BrowseByActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ByFilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FilteredBrowseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetTotalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateEffectActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SearchActivity"
+            android:screenOrientation="portrait" ></activity>
     </application>
 
 </manifest>

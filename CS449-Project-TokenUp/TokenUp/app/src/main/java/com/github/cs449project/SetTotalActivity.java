@@ -119,9 +119,6 @@ public class SetTotalActivity extends AppCompatActivity {
     }
 
     public void confirm(View view) {
-        MainActivity.mainact.finish();
-
-        Intent mainScreen = new Intent(SetTotalActivity.this, MainActivity.class);
 
         Bundle bundle = new Bundle();
         bundle.putInt("TOTAL", total);
@@ -131,9 +128,8 @@ public class SetTotalActivity extends AppCompatActivity {
         bundle.putInt("SSICK", ssick);
         bundle.putInt("TAPPED", tapped);
         bundle.putBoolean("SETTOTAL", true);
-        mainScreen.putExtras(bundle);
 
-        startActivity(mainScreen);
+        MainActivity.mainact.getIntent().putExtras(bundle);
 
         finish();
     }

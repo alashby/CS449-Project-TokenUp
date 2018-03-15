@@ -1,0 +1,38 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.github.cs449project.EffectsFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/button_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hide Effects" />
+
+        <ListView
+            android:id="@+id/view_effectlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/button_create_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Create New Effect" />
+    </LinearLayout>
+
+</FrameLayout>
