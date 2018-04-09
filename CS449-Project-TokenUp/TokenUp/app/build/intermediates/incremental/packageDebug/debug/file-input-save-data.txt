@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Mar 07 20:42:52 CST 2018
+#Fri Apr 06 15:24:08 CDT 2018
 1.base=C\:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\assets\\debug
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY

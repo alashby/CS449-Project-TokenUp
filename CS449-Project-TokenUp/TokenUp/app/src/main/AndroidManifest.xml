@@ -35,8 +35,12 @@
         <activity
             android:name=".CreateEffectActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".SearchActivity"
-            android:screenOrientation="portrait" ></activity>
+        <activity
+            android:name=".SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateTokenActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

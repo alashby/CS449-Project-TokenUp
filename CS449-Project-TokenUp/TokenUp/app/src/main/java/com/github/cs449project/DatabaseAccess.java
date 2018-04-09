@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.text.TextUtils;
 
 import java.util.ArrayList;
@@ -265,6 +266,156 @@ public class DatabaseAccess {
         return list;
     }
 
+    private String formatStr(String str) {
+        str = str.toUpperCase();
+
+        if (str.contains("%")) {
+            str = str.replaceAll("%", "\\%");
+        }
+        if (str.contains("'")) {
+            str = str.replaceAll("'", "\\'");
+        }
+        if (str.contains("\"")) {
+            str = str.replaceAll("\"", "\\\"");
+        }
+        if (str.contains("_")) {
+            str = str.replaceAll("_", "\\_");
+        }
+
+        return str;
+    }
+
+   public ArrayList<Bitmap> queryImgs(Bundle bundle) {
+        ArrayList<Bitmap> list = new ArrayList<>();
+        String whereClause = "WHERE ";
+
+        if (bundle.containsKey("input_id")) {
+            whereClause += "upper(Id) LIKE '%" + formatStr(bundle.getString("input_id")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_name")) {
+            whereClause += "upper(Name) LIKE '%" + formatStr(bundle.getString("input_name")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_type")) {
+            whereClause += "upper(Type) LIKE '%" + formatStr(bundle.getString("input_type")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_subtype")) {
+            whereClause += "upper(SubType) LIKE '%" + formatStr(bundle.getString("input_subtype")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_set")) {
+            whereClause += "upper(MTGSet) LIKE '%" + formatStr(bundle.getString("input_set")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("text_power")) {
+            whereClause += "Power = '" + bundle.getString("text_power") + "' AND ";
+        }
+        if (bundle.containsKey("text_toughness")) {
+            whereClause += "Toughness = '" + bundle.getString("text_toughness") + "' AND ";
+        }
+        if (bundle.containsKey("input_artist")) {
+            whereClause += "upper(Artist) LIKE '%" + formatStr(bundle.getString("input_artist") + "%' ESCAPE '\\' AND ");
+        }
+        if (bundle.containsKey("input_abilities")) {
+            for (int i = 0; i < bundle.getStringArray("input_abilities").length; i++) {
+                whereClause += "upper(Abilities) LIKE '%" + bundle.getStringArray("input_abilities")[i] + "%' ESCAPE '\\' AND ";
+            }
+        }
+        if (bundle.containsKey("input_tags")) {
+            for (int i = 0; i < bundle.getStringArray("input_tags").length; i++) {
+                whereClause += "upper(Tags) LIKE '%" + bundle.getStringArray("input_tags")[i] + "%' ESCAPE '\\' AND ";
+            }
+        }
+        if (bundle.containsKey("button_monocolor")) {
+            whereClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                whereClause += "Colors = 'B' OR ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                whereClause += "Colors = 'U' OR ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                whereClause += "Colors = 'G' OR ";
+            }
+            if (bundle.containsKey("RED")) {
+                whereClause += "Colors = 'R' OR ";
+            }
+            if (bundle.containsKey("WHITE")) {
+                whereClause += "Colors = 'W' OR ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                whereClause += "Colors = 'A' OR ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                whereClause += "Colors = 'C' OR ";
+            }
+            whereClause = whereClause.substring(0, whereClause.length()-4);
+            whereClause += ") AND ";
+        }
+        if (bundle.containsKey("button_multicolor")) {
+            whereClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                whereClause += "Colors LIKE '%B%' AND ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                whereClause += "Colors LIKE '%U%' AND ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                whereClause += "Colors LIKE '%G%' AND ";
+            }
+            if (bundle.containsKey("RED")) {
+                whereClause += "Colors LIKE '%R%' AND ";;
+            }
+            if (bundle.containsKey("WHITE")) {
+                whereClause += "Colors LIKE '%W%' AND ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                whereClause += "Colors LIKE '%A%' AND ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                whereClause += "Colors LIKE '%C%' AND ";
+            }
+            whereClause = whereClause.substring(0, whereClause.length()-5);
+            whereClause += ") AND ";
+        }
+       if (bundle.containsKey("button_bothcolor")) {
+           whereClause += "(";
+           if (bundle.containsKey("BLACK")) {
+               whereClause += "Colors LIKE '%B%' OR ";
+           }
+           if (bundle.containsKey("BLUE")) {
+               whereClause += "Colors LIKE '%U%' OR ";
+           }
+           if (bundle.containsKey("GREEN")) {
+               whereClause += "Colors LIKE '%G%' OR ";
+           }
+           if (bundle.containsKey("RED")) {
+               whereClause += "Colors LIKE '%R%' OR ";;
+           }
+           if (bundle.containsKey("WHITE")) {
+               whereClause += "Colors LIKE '%W%' OR ";
+           }
+           if (bundle.containsKey("ARTIFACT")) {
+               whereClause += "Colors LIKE '%A%' OR ";
+           }
+           if (bundle.containsKey("COLORLESS")) {
+               whereClause += "Colors LIKE '%C%' OR ";
+           }
+           whereClause = whereClause.substring(0, whereClause.length()-4);
+           whereClause += ") AND ";
+        }
+
+        whereClause = whereClause.substring(0, whereClause.length()-5);
+
+        Cursor cursor = database.rawQuery("SELECT ImgFile FROM Tokens " + whereClause, null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            byte[] byteArray = cursor.getBlob(0);
+            Bitmap img = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            list.add(img);;
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
 
     public ArrayList<String> getIDs(String parameter, String category) {
         if (category.equals("colors")){
@@ -280,6 +431,136 @@ public class DatabaseAccess {
         String[] param = new String[] { parameter };
         ArrayList<String> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT Id FROM Tokens WHERE " + category + " = ? ORDER BY Name, Artist, MTGSet", param);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(cursor.getString(0));;
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        return list;
+    }
+
+    public ArrayList<String> getIDs(Bundle bundle) {
+        ArrayList<String> list = new ArrayList<>();
+        String whereClause = "WHERE ";
+
+        if (bundle.containsKey("input_id")) {
+            whereClause += "upper(Id) LIKE '%" + formatStr(bundle.getString("input_id")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_name")) {
+            whereClause += "upper(Name) LIKE '%" + formatStr(bundle.getString("input_name")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_type")) {
+            whereClause += "upper(Type) LIKE '%" + formatStr(bundle.getString("input_type")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_subtype")) {
+            whereClause += "upper(SubType) LIKE '%" + formatStr(bundle.getString("input_subtype")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("input_set")) {
+            whereClause += "upper(MTGSet) LIKE '%" + formatStr(bundle.getString("input_set")) + "%' ESCAPE '\\' AND ";
+        }
+        if (bundle.containsKey("text_power")) {
+            whereClause += "Power = '" + bundle.getString("text_power") + "' AND ";
+        }
+        if (bundle.containsKey("text_toughness")) {
+            whereClause += "Toughness = '" + bundle.getString("text_toughness") + "' AND ";
+        }
+        if (bundle.containsKey("input_artist")) {
+            whereClause += "upper(Artist) LIKE '%" + formatStr(bundle.getString("input_artist") + "%' ESCAPE '\\' AND ");
+        }
+        if (bundle.containsKey("input_abilities")) {
+            for (int i = 0; i < bundle.getStringArray("input_abilities").length; i++) {
+                whereClause += "upper(Abilities) LIKE '%" + bundle.getStringArray("input_abilities")[i] + "%' ESCAPE '\\' AND ";
+            }
+        }
+        if (bundle.containsKey("input_tags")) {
+            for (int i = 0; i < bundle.getStringArray("input_tags").length; i++) {
+                whereClause += "upper(Tags) LIKE '%" + bundle.getStringArray("input_tags")[i] + "%' ESCAPE '\\' AND ";
+            }
+        }
+        if (bundle.containsKey("button_monocolor")) {
+            whereClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                whereClause += "Colors = 'B' OR ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                whereClause += "Colors = 'U' OR ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                whereClause += "Colors = 'G' OR ";
+            }
+            if (bundle.containsKey("RED")) {
+                whereClause += "Colors = 'R' OR ";
+            }
+            if (bundle.containsKey("WHITE")) {
+                whereClause += "Colors = 'W' OR ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                whereClause += "Colors = 'A' OR ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                whereClause += "Colors = 'C' OR ";
+            }
+            whereClause = whereClause.substring(0, whereClause.length()-4);
+            whereClause += ") AND ";
+        }
+        if (bundle.containsKey("button_multicolor")) {
+            whereClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                whereClause += "Colors LIKE '%B%' AND ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                whereClause += "Colors LIKE '%U%' AND ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                whereClause += "Colors LIKE '%G%' AND ";
+            }
+            if (bundle.containsKey("RED")) {
+                whereClause += "Colors LIKE '%R%' AND ";;
+            }
+            if (bundle.containsKey("WHITE")) {
+                whereClause += "Colors LIKE '%W%' AND ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                whereClause += "Colors LIKE '%A%' AND ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                whereClause += "Colors LIKE '%C%' AND ";
+            }
+            whereClause = whereClause.substring(0, whereClause.length()-5);
+            whereClause += ") AND ";
+        }
+        if (bundle.containsKey("button_bothcolor")) {
+            whereClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                whereClause += "Colors LIKE '%B%' OR ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                whereClause += "Colors LIKE '%U%' OR ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                whereClause += "Colors LIKE '%G%' OR ";
+            }
+            if (bundle.containsKey("RED")) {
+                whereClause += "Colors LIKE '%R%' OR ";;
+            }
+            if (bundle.containsKey("WHITE")) {
+                whereClause += "Colors LIKE '%W%' OR ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                whereClause += "Colors LIKE '%A%' OR ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                whereClause += "Colors LIKE '%C%' OR ";
+            }
+            whereClause = whereClause.substring(0, whereClause.length()-4);
+            whereClause += ") AND ";
+        }
+
+        whereClause = whereClause.substring(0, whereClause.length()-5);
+
+        Cursor cursor = database.rawQuery("SELECT Id FROM Tokens " + whereClause, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));;
@@ -352,6 +633,124 @@ public class DatabaseAccess {
         }
         cursor.close();
         return list;
+    }
+
+    public void createToken(Bundle bundle) {
+        String createClause = "INSERT INTO Tokens Values ('" + bundle.getString("input_id").trim() + "',";
+
+        if (bundle.containsKey("input_name")) {
+            createClause += "'" + bundle.getString("input_name") + "',";
+        }
+        else
+        {
+            createClause += "'',";
+        }
+        if (bundle.containsKey("input_type")) {
+            createClause += "'" + bundle.getString("input_name") + "',";
+        }
+        else
+        {
+            createClause += "'',";
+        }
+        if (bundle.containsKey("text_power")) {
+            createClause += "Power = '" + bundle.getString("text_power") + "' AND ";
+        }
+        if (bundle.containsKey("text_toughness")) {
+            createClause += "Toughness = '" + bundle.getString("text_toughness") + "' AND ";
+        }
+        if (bundle.containsKey("input_artist")) {
+            createClause += "upper(Artist) LIKE '%" + formatStr(bundle.getString("input_artist") + "%' ESCAPE '\\' AND ");
+        }
+        if (bundle.containsKey("input_abilities")) {
+            for (int i = 0; i < bundle.getStringArray("input_abilities").length; i++) {
+                createClause += "upper(Abilities) LIKE '%" + bundle.getStringArray("input_abilities")[i] + "%' ESCAPE '\\' AND ";
+            }
+        }
+        if (bundle.containsKey("input_tags")) {
+            for (int i = 0; i < bundle.getStringArray("input_tags").length; i++) {
+                createClause += "upper(Tags) LIKE '%" + bundle.getStringArray("input_tags")[i] + "%' ESCAPE '\\' AND ";
+            }
+        }
+        if (bundle.containsKey("button_monocolor")) {
+            createClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                createClause += "Colors = 'B' OR ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                createClause += "Colors = 'U' OR ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                createClause += "Colors = 'G' OR ";
+            }
+            if (bundle.containsKey("RED")) {
+                createClause += "Colors = 'R' OR ";
+            }
+            if (bundle.containsKey("WHITE")) {
+                createClause += "Colors = 'W' OR ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                createClause += "Colors = 'A' OR ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                createClause += "Colors = 'C' OR ";
+            }
+            createClause = createClause.substring(0, createClause.length()-4);
+            createClause += ") AND ";
+        }
+        if (bundle.containsKey("button_multicolor")) {
+            createClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                createClause += "Colors LIKE '%B%' AND ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                createClause += "Colors LIKE '%U%' AND ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                createClause += "Colors LIKE '%G%' AND ";
+            }
+            if (bundle.containsKey("RED")) {
+                createClause += "Colors LIKE '%R%' AND ";;
+            }
+            if (bundle.containsKey("WHITE")) {
+                createClause += "Colors LIKE '%W%' AND ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                createClause += "Colors LIKE '%A%' AND ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                createClause += "Colors LIKE '%C%' AND ";
+            }
+            createClause = createClause.substring(0, createClause.length()-5);
+            createClause += ") AND ";
+        }
+        if (bundle.containsKey("button_bothcolor")) {
+            createClause += "(";
+            if (bundle.containsKey("BLACK")) {
+                createClause += "Colors LIKE '%B%' OR ";
+            }
+            if (bundle.containsKey("BLUE")) {
+                createClause += "Colors LIKE '%U%' OR ";
+            }
+            if (bundle.containsKey("GREEN")) {
+                createClause += "Colors LIKE '%G%' OR ";
+            }
+            if (bundle.containsKey("RED")) {
+                createClause += "Colors LIKE '%R%' OR ";;
+            }
+            if (bundle.containsKey("WHITE")) {
+                createClause += "Colors LIKE '%W%' OR ";
+            }
+            if (bundle.containsKey("ARTIFACT")) {
+                createClause += "Colors LIKE '%A%' OR ";
+            }
+            if (bundle.containsKey("COLORLESS")) {
+                createClause += "Colors LIKE '%C%' OR ";
+            }
+            createClause = createClause.substring(0, createClause.length()-4);
+            createClause += ") AND ";
+        }
+
+        createClause = createClause.substring(0, createClause.length()-5);
     }
 
 }

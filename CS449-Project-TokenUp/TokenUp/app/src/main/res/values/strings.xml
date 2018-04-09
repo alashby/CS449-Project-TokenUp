@@ -11,6 +11,7 @@
     <string name="newupkeep">New Upkeep</string>
 
     <string-array name="sets_array">
+        <item> </item>
         <item>Aether Revolt</item>
         <item>Amonkhet</item>
         <item>Archenemy: Nicol Bolas</item>

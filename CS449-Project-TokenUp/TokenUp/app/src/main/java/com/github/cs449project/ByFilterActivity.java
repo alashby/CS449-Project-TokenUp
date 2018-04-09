@@ -14,14 +14,11 @@ import java.util.List;
 
 public class ByFilterActivity extends AppCompatActivity {
     private ListView listView;
-    public static Activity byFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_by_filter);
-
-        byFilter = this;
 
         Bundle bundle = getIntent().getExtras();
         final String filter = bundle.getString("FILTER");
@@ -77,6 +74,8 @@ public class ByFilterActivity extends AppCompatActivity {
                 activityBrowseSelect.putExtras(bundle);
 
                 startActivity(activityBrowseSelect);
+
+                finish();
             }
         });
     }

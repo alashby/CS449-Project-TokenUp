@@ -8,6 +8,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/relativelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -15,23 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Spinner
-            android:id="@+id/spinner_idoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/input_id"
-            android:layout_alignBottom="@id/input_id"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"/>
-
         <TextView
             android:id="@+id/text_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@id/spinner_idoptions"
-            android:layout_alignTop="@id/input_id"
             android:layout_alignBottom="@id/input_id"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignTop="@id/input_id"
             android:gravity="center"
             android:text="ID: " />
 
@@ -44,23 +36,14 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spinner_nameoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_id"
-            android:layout_alignTop="@id/input_name"
-            android:layout_alignBottom="@id/input_name"
-            android:layout_alignParentStart="true"/>
-
         <TextView
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_id"
-            android:layout_toRightOf="@id/spinner_nameoptions"
-            android:layout_alignTop="@id/input_name"
             android:layout_alignBottom="@id/input_name"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_name"
+            android:layout_below="@id/input_id"
             android:gravity="center"
             android:text="Name: " />
 
@@ -73,23 +56,14 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spinner_typeoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_name"
-            android:layout_alignTop="@id/input_type"
-            android:layout_alignBottom="@id/input_type"
-            android:layout_alignParentStart="true"/>
-
         <TextView
             android:id="@+id/text_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_name"
-            android:layout_alignTop="@id/input_type"
             android:layout_alignBottom="@id/input_type"
-            android:layout_toRightOf="@id/spinner_typeoptions"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_type"
+            android:layout_below="@id/input_name"
             android:gravity="center"
             android:text="Type: " />
 
@@ -102,23 +76,14 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spinner_subtypeoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_type"
-            android:layout_alignTop="@id/input_subtype"
-            android:layout_alignBottom="@id/input_subtype"
-            android:layout_alignParentStart="true"/>
-
         <TextView
             android:id="@+id/text_subtype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_type"
-            android:layout_alignTop="@id/input_subtype"
             android:layout_alignBottom="@id/input_subtype"
-            android:layout_toRightOf="@id/spinner_subtypeoptions"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_subtype"
+            android:layout_below="@id/input_type"
             android:gravity="center"
             android:text="Subtype: " />
 
@@ -131,46 +96,32 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spinner_setoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_subtype"
-            android:layout_alignTop="@id/spinner_set"
-            android:layout_alignBottom="@id/spinner_set"
-            android:layout_alignParentStart="true"/>
-
         <TextView
             android:id="@+id/text_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/input_set"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_set"
             android:layout_below="@id/input_subtype"
-            android:layout_alignTop="@id/spinner_set"
-            android:layout_alignBottom="@id/spinner_set"
-            android:layout_toRightOf="@id/spinner_setoptions"
             android:gravity="center"
             android:text="Set: " />
 
-        <Spinner
-            android:id="@+id/spinner_set"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/input_set"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/input_subtype"
-            android:layout_toRightOf="@id/text_set"/>
-
-        <Spinner
-            android:id="@+id/spinner_coloroptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinner_set"
-            android:layout_alignParentStart="true"/>
+            android:layout_toRightOf="@id/text_set"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/spinner_set"
-            android:layout_toRightOf="@id/spinner_coloroptions"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/text_set"
             android:gravity="center"
             android:text="Color: " />
 
@@ -178,54 +129,66 @@
             android:id="@+id/colorslayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/spinner_set"
+            android:layout_below="@id/text_set"
             android:layout_toRightOf="@id/text_color">
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <CheckBox
                     android:id="@+id/checkbox_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="Black" />
+
                 <CheckBox
                     android:id="@+id/checkbox_blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="Blue" />
+
                 <CheckBox
                     android:id="@+id/checkbox_green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="Green" />
+
                 <CheckBox
                     android:id="@+id/checkbox_red"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="Red" />
 
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <CheckBox
                     android:id="@+id/checkbox_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="White" />
+
                 <CheckBox
                     android:id="@+id/checkbox_artifact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="Artifact" />
+
                 <CheckBox
                     android:id="@+id/checkbox_colorless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="checkColor"
                     android:text="Colorless" />
             </TableRow>
 
@@ -244,21 +207,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="Monocolored Only" />
+                android:text="Monocolored Only"
+                android:onClick="clickRadioBtn"/>
 
             <RadioButton
                 android:id="@+id/button_multicolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="Multicolored Only"/>
+                android:text="Multicolored Only"
+                android:onClick="clickRadioBtn"/>
 
             <RadioButton
                 android:id="@+id/button_bothcolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="Both"/>
+                android:text="Both"
+                android:onClick="clickRadioBtn"/>
 
         </LinearLayout>
 
@@ -269,11 +235,6 @@
             android:layout_alignParentStart="true"
             android:layout_below="@id/coloroptionlayout"
             android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/spinner_ptoptions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/text_pt"
@@ -287,20 +248,23 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="decPower"
                 android:text="@string/dec" />
+
 
             <TextView
                 android:id="@+id/text_power"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/zero" />
+                android:text="Any" />
 
             <Button
                 android:id="@+id/button_powerInc"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="incPower"
                 android:text="@string/inc" />
 
             <TextView
@@ -315,41 +279,34 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dec" />
+                android:text="@string/dec"
+                android:onClick="decToughness"/>
 
             <TextView
                 android:id="@+id/text_toughness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/zero" />
+                android:text="Any" />
 
             <Button
                 android:id="@+id/button_toughnessInc"
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="incToughness"
                 android:text="@string/inc" />
 
         </LinearLayout>
-
-        <Spinner
-            android:id="@+id/spinner_abilitiesoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ptlayout"
-            android:layout_alignTop="@id/input_abilities"
-            android:layout_alignBottom="@id/input_abilities"
-            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/text_abilities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ptlayout"
-            android:layout_alignTop="@id/input_abilities"
             android:layout_alignBottom="@id/input_abilities"
-            android:layout_toRightOf="@id/spinner_abilitiesoptions"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_abilities"
+            android:layout_below="@id/ptlayout"
             android:gravity="center"
             android:text="Abilities (separate with ';'): " />
 
@@ -362,23 +319,14 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spinner_artistoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_abilities"
-            android:layout_alignTop="@id/input_artist"
-            android:layout_alignBottom="@id/input_artist"
-            android:layout_alignParentStart="true"/>
-
         <TextView
             android:id="@+id/text_artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_abilities"
-            android:layout_alignTop="@id/input_artist"
             android:layout_alignBottom="@id/input_artist"
-            android:layout_toRightOf="@id/spinner_artistoptions"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_artist"
+            android:layout_below="@id/input_abilities"
             android:gravity="center"
             android:text="Artist: " />
 
@@ -391,23 +339,14 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Spinner
-            android:id="@+id/spinner_tagsoptions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/input_artist"
-            android:layout_alignTop="@id/input_tags"
-            android:layout_alignBottom="@id/input_tags"
-            android:layout_alignParentStart="true"/>
-
         <TextView
             android:id="@+id/text_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_artist"
-            android:layout_alignTop="@id/input_tags"
             android:layout_alignBottom="@id/input_tags"
-            android:layout_toRightOf="@id/spinner_tagsoptions"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@id/input_tags"
+            android:layout_below="@id/input_artist"
             android:gravity="center"
             android:text="Tags (separate with ';'): " />
 
@@ -426,7 +365,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/input_tags"
             android:layout_centerHorizontal="true"
-            android:text="Search" />
+            android:text="Search"
+            android:onClick="search"/>
 
 
     </RelativeLayout>

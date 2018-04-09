@@ -102,8 +102,6 @@ public class CreateEffectActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("KEYWORDS", keywords);
         bundle.putInt("NUMAFFECTED", numAffected);
-        bundle.putString("DESCSTR", descstr);
-        bundle.putString("SRCSTR", srcstr);
         bundle.putBoolean("CREATEEFFECT", true);
 
         MainActivity.mainact.getIntent().putExtras(bundle);

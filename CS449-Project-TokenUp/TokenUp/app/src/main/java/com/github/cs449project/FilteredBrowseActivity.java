@@ -34,14 +34,27 @@ public class FilteredBrowseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filtered_browse);
 
         Bundle bundle = getIntent().getExtras();
-        String selection = bundle.getString("SELECTION");
-        String filter = bundle.getString("FILTER");
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this);
         databaseAccess.open();
 
-        ArrayList<Bitmap> imgList = databaseAccess.getImgs(selection, filter);
-        final ArrayList<String> idList = databaseAccess.getIDs(selection, filter);
+        ArrayList<Bitmap> imgs = new ArrayList<>();
+        ArrayList<String> ids = new ArrayList<>();
+
+        if (bundle.containsKey("SELECTION") && bundle.containsKey("FILTER")) {
+            String selection = bundle.getString("SELECTION");
+            String filter = bundle.getString("FILTER");
+
+            imgs = databaseAccess.getImgs(selection, filter);
+            ids = databaseAccess.getIDs(selection, filter);
+        }
+        else {
+            imgs = databaseAccess.queryImgs(bundle);
+            ids = databaseAccess.getIDs(bundle);
+        }
+
+        ArrayList<Bitmap> imgList = imgs;
+        final ArrayList<String> idList = ids;
 
         databaseAccess.close();
 
@@ -54,8 +67,6 @@ public class FilteredBrowseActivity extends AppCompatActivity {
                 SelectedToken.img = img;
                 SelectedToken.id = idList.get(position);
 
-
-                ByFilterActivity.byFilter.finish();
                 BrowseByActivity.browseBy.finish();
                 MainActivity.mainact.finish();
 

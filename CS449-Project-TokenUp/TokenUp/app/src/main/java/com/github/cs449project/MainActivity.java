@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent activityBrowse = new Intent(MainActivity.this, BrowseByActivity.class);
                 startActivity(activityBrowse);
                 return true;
+            case R.id.menu_createtoken:
+                Intent activityCreateToken = new Intent(MainActivity.this, CreateTokenActivity.class);
+                startActivity(activityCreateToken);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
