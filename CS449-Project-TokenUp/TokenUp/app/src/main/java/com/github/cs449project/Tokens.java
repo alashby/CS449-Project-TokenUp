@@ -73,7 +73,13 @@ public class Tokens {
     }
 
     public void incTotal() {
-        if (SelectedToken.abilities.contains("Haste")) {
+        Boolean haste = false;
+        for (int i = 0; i < SelectedToken.abilities.size(); i++) {
+            if (SelectedToken.abilities.get(i).toUpperCase().equals("HASTE")) {
+                haste = true;
+            }
+        }
+        if (haste) {
             readyTokens++;
         }
         else {
@@ -182,7 +188,13 @@ public class Tokens {
     public void opponentTurn() {
         playerTurn = false;
 
-        if (SelectedToken.abilities.contains("Vigilance")) {
+        Boolean vigilance = false;
+        for (int i = 0; i < SelectedToken.abilities.size(); i++) {
+            if (SelectedToken.abilities.get(i).toUpperCase().equals("VIGILANCE")) {
+                vigilance = true;
+            }
+        }
+        if (vigilance) {
             readyTokens += attackers;
 
         }

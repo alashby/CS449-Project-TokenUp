@@ -61,8 +61,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@id/input_name"
+            android:layout_alignTop="@id/image_token"
+            android:layout_alignBottom="@id/image_token"
             android:gravity="center"
-            android:text="Image: " />
+            android:text="Image (Required): " />
+
+        <Button
+            android:id="@+id/button_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_name"
+            android:layout_toRightOf="@id/text_img"
+            android:text="Select Image"
+            android:onClick="selectImg"/>
+
+        <ImageView
+            android:id="@+id/image_token"
+            android:layout_width="@android:dimen/app_icon_size"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:layout_below="@+id/input_name"
+            android:layout_toRightOf="@id/button_img"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/text_type"
@@ -71,7 +90,7 @@
             android:layout_alignBottom="@id/input_type"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@id/input_type"
-            android:layout_below="@id/text_img"
+            android:layout_below="@id/button_img"
             android:gravity="center"
             android:text="Type: " />
 
@@ -79,7 +98,7 @@
             android:id="@+id/input_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_name"
+            android:layout_below="@id/button_img"
             android:layout_toRightOf="@id/text_type"
             android:ems="10"
             android:inputType="textPersonName" />
@@ -148,28 +167,24 @@
                     android:id="@+id/checkbox_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="Black" />
 
                 <CheckBox
                     android:id="@+id/checkbox_blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="Blue" />
 
                 <CheckBox
                     android:id="@+id/checkbox_green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="Green" />
 
                 <CheckBox
                     android:id="@+id/checkbox_red"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="Red" />
 
             </TableRow>
@@ -182,21 +197,18 @@
                     android:id="@+id/checkbox_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="White" />
 
                 <CheckBox
                     android:id="@+id/checkbox_artifact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="Artifact" />
 
                 <CheckBox
                     android:id="@+id/checkbox_colorless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="checkColor"
                     android:text="Colorless" />
             </TableRow>
 
@@ -222,7 +234,8 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dec" />
+                android:text="@string/dec"
+                android:onClick="decPower"/>
 
             <TextView
                 android:id="@+id/text_power"
@@ -236,7 +249,8 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/inc" />
+                android:text="@string/inc"
+                android:onClick="incPower"/>
 
             <TextView
                 android:id="@+id/text_slash"
@@ -250,7 +264,8 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dec" />
+                android:text="@string/dec"
+                android:onClick="decToughness"/>
 
             <TextView
                 android:id="@+id/text_toughness"
@@ -264,7 +279,8 @@
                 style="@style/Widget.AppCompat.Button.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/inc" />
+                android:text="@string/inc"
+                android:onClick="incToughness"/>
 
         </LinearLayout>
 

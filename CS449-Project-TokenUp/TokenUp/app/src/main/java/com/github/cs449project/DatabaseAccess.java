@@ -5,11 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -635,122 +640,50 @@ public class DatabaseAccess {
         return list;
     }
 
-    public void createToken(Bundle bundle) {
-        String createClause = "INSERT INTO Tokens Values ('" + bundle.getString("input_id").trim() + "',";
+    public void createToken(String id, String name, byte[] img, String type, String subtype,
+                            String mtgset, ArrayList<String> colors, String power, String toughness,
+                            String[] abilities, String artist, String[] tags) {
 
-        if (bundle.containsKey("input_name")) {
-            createClause += "'" + bundle.getString("input_name") + "',";
+        String colorsstr = "";
+        sort(colors);
+        for (int i = 0; i < colors.size(); i++) {
+            colorsstr += colors.get(i);
         }
-        else
-        {
-            createClause += "'',";
+        String abilitiesstr = "";
+        for (int i = 0; i < abilities.length; i++) {
+            abilitiesstr += abilities[i].trim() + "\n";
         }
-        if (bundle.containsKey("input_type")) {
-            createClause += "'" + bundle.getString("input_name") + "',";
-        }
-        else
-        {
-            createClause += "'',";
-        }
-        if (bundle.containsKey("text_power")) {
-            createClause += "Power = '" + bundle.getString("text_power") + "' AND ";
-        }
-        if (bundle.containsKey("text_toughness")) {
-            createClause += "Toughness = '" + bundle.getString("text_toughness") + "' AND ";
-        }
-        if (bundle.containsKey("input_artist")) {
-            createClause += "upper(Artist) LIKE '%" + formatStr(bundle.getString("input_artist") + "%' ESCAPE '\\' AND ");
-        }
-        if (bundle.containsKey("input_abilities")) {
-            for (int i = 0; i < bundle.getStringArray("input_abilities").length; i++) {
-                createClause += "upper(Abilities) LIKE '%" + bundle.getStringArray("input_abilities")[i] + "%' ESCAPE '\\' AND ";
-            }
-        }
-        if (bundle.containsKey("input_tags")) {
-            for (int i = 0; i < bundle.getStringArray("input_tags").length; i++) {
-                createClause += "upper(Tags) LIKE '%" + bundle.getStringArray("input_tags")[i] + "%' ESCAPE '\\' AND ";
-            }
-        }
-        if (bundle.containsKey("button_monocolor")) {
-            createClause += "(";
-            if (bundle.containsKey("BLACK")) {
-                createClause += "Colors = 'B' OR ";
-            }
-            if (bundle.containsKey("BLUE")) {
-                createClause += "Colors = 'U' OR ";
-            }
-            if (bundle.containsKey("GREEN")) {
-                createClause += "Colors = 'G' OR ";
-            }
-            if (bundle.containsKey("RED")) {
-                createClause += "Colors = 'R' OR ";
-            }
-            if (bundle.containsKey("WHITE")) {
-                createClause += "Colors = 'W' OR ";
-            }
-            if (bundle.containsKey("ARTIFACT")) {
-                createClause += "Colors = 'A' OR ";
-            }
-            if (bundle.containsKey("COLORLESS")) {
-                createClause += "Colors = 'C' OR ";
-            }
-            createClause = createClause.substring(0, createClause.length()-4);
-            createClause += ") AND ";
-        }
-        if (bundle.containsKey("button_multicolor")) {
-            createClause += "(";
-            if (bundle.containsKey("BLACK")) {
-                createClause += "Colors LIKE '%B%' AND ";
-            }
-            if (bundle.containsKey("BLUE")) {
-                createClause += "Colors LIKE '%U%' AND ";
-            }
-            if (bundle.containsKey("GREEN")) {
-                createClause += "Colors LIKE '%G%' AND ";
-            }
-            if (bundle.containsKey("RED")) {
-                createClause += "Colors LIKE '%R%' AND ";;
-            }
-            if (bundle.containsKey("WHITE")) {
-                createClause += "Colors LIKE '%W%' AND ";
-            }
-            if (bundle.containsKey("ARTIFACT")) {
-                createClause += "Colors LIKE '%A%' AND ";
-            }
-            if (bundle.containsKey("COLORLESS")) {
-                createClause += "Colors LIKE '%C%' AND ";
-            }
-            createClause = createClause.substring(0, createClause.length()-5);
-            createClause += ") AND ";
-        }
-        if (bundle.containsKey("button_bothcolor")) {
-            createClause += "(";
-            if (bundle.containsKey("BLACK")) {
-                createClause += "Colors LIKE '%B%' OR ";
-            }
-            if (bundle.containsKey("BLUE")) {
-                createClause += "Colors LIKE '%U%' OR ";
-            }
-            if (bundle.containsKey("GREEN")) {
-                createClause += "Colors LIKE '%G%' OR ";
-            }
-            if (bundle.containsKey("RED")) {
-                createClause += "Colors LIKE '%R%' OR ";;
-            }
-            if (bundle.containsKey("WHITE")) {
-                createClause += "Colors LIKE '%W%' OR ";
-            }
-            if (bundle.containsKey("ARTIFACT")) {
-                createClause += "Colors LIKE '%A%' OR ";
-            }
-            if (bundle.containsKey("COLORLESS")) {
-                createClause += "Colors LIKE '%C%' OR ";
-            }
-            createClause = createClause.substring(0, createClause.length()-4);
-            createClause += ") AND ";
+        String tagsstr = "";
+        for (int i = 0; i < tags.length; i++) {
+            tagsstr += tags[i].trim() + ",";
         }
 
-        createClause = createClause.substring(0, createClause.length()-5);
+        String createStatement = "INSERT INTO Tokens(Id,Name,ImgFile,Type,SubType,MTGSet,Colors,Power,Toughness,Abilities,Artist,Tags)VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
+        SQLiteStatement stmt = database.compileStatement(createStatement);
+        stmt.bindString(1,id);
+        stmt.bindString(2,name);
+        stmt.bindBlob(3,img);
+        stmt.bindString(4,type);
+        stmt.bindString(5,subtype);
+        stmt.bindString(6,mtgset);
+        stmt.bindString(7,colorsstr);
+        if (power.isEmpty()) {
+            stmt.bindNull(8);
+        }
+        else {
+            stmt.bindString(8,power);
+        }
+        if (toughness.isEmpty()) {
+            stmt.bindNull(9);
+        }
+        else {
+            stmt.bindString(9,toughness);
+        }
+        stmt.bindString(10,abilitiesstr);
+        stmt.bindString(11,artist.trim());
+        stmt.bindString(12,tagsstr);
+
+        stmt.executeInsert();
     }
 
 }
