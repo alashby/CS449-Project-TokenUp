@@ -49,6 +49,9 @@
         <activity
             android:name="com.github.cs449project.CreateTokenActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.github.cs449project.RecentTokensActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="android.support.VERSION"

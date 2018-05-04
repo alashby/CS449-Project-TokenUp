@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
+ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\0721f9467e1c3b73cdb7cb047a48a56b\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\90a2625b405be390a50953c121381c79\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\a63def379275105423af13b84c5bf639\AndroidManifest.xml:2:1-11:12
@@ -15,25 +15,25 @@ MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Al\.gradle\cac
 MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\61e19db3c694890fbf393c0fe44776e3\AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\35fc74ff9ab212c0d0e3b65a6265570e\AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\b39a0be1cbd6abaf6cc2f8fcd8c50caf\AndroidManifest.xml:17:1-30:12
-INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:5:5-44:19
+ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:5:5-46:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\0721f9467e1c3b73cdb7cb047a48a56b\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\0721f9467e1c3b73cdb7cb047a48a56b\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Al\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\90a2625b405be390a50953c121381c79\AndroidManifest.xml:25:5-29:19
@@ -125,11 +125,17 @@ ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\To
 	android:name
 		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:39:13-43
 activity#com.github.cs449project.CreateTokenActivity
-ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:41:9-43:61
+ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:41:9-43:52
 	android:screenOrientation
 		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:43:13-49
 	android:name
 		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:42:13-48
+activity#com.github.cs449project.RecentTokensActivity
+ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:44:9-45:61
+	android:screenOrientation
+		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:45:13-49
+	android:name
+		ADDED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml:44:19-55
 uses-sdk
 INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Al\Documents\GitHub\CS449-Project-2\CS449-Project-TokenUp\TokenUp\app\src\main\AndroidManifest.xml

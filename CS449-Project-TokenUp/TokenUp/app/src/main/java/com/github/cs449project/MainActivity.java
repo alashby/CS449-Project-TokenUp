@@ -2,6 +2,7 @@ package com.github.cs449project;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -19,11 +20,29 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.support.v4.app.Fragment;
 
+import org.w3c.dom.Text;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseAccess databaseAccess;
     public static Activity mainact;
+    private Queue<String> lastTokens;
+    private String[] lastTokensArr;
 
     Tokens tokens;
 
@@ -38,7 +57,18 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.background);
         tokens = new Tokens();
 
+        /*File recentTokensFile = getFileStreamPath("recenttokens.txt");
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter(recentTokensFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        writer.print("");
+        writer.close();*/
+
         if (SelectedToken.img != null) {
+            lastTokens = new LinkedList<String>();
             enableButtons();
 
             Drawable drawable = new BitmapDrawable(getResources(), SelectedToken.img);
@@ -49,7 +79,95 @@ public class MainActivity extends AppCompatActivity {
 
             SelectedToken.abilities = databaseAccess.getAbilities(SelectedToken.id);
 
+
+            File recentTokensFile = getFileStreamPath("recenttokens.txt");
+            if (recentTokensFile.length() == 0) {
+                FileOutputStream fostream = null;
+                try {
+                    fostream = openFileOutput("recenttokens.txt", Context.MODE_PRIVATE);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    fostream.write((SelectedToken.id + "\n").getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    fostream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                lastTokens.add(SelectedToken.id);
+            }
+            else {
+                Scanner scanner = null;
+                try {
+                    scanner = new Scanner(recentTokensFile);
+                    while (scanner.hasNext()) {
+                        if (!scanner.hasNext(SelectedToken.id)) {
+                            lastTokens.add(scanner.next());
+                        }
+                        else {
+                            scanner.next();
+                        }
+                    }
+                    scanner.close();
+                    if (lastTokens.size() == 5) {
+                        FileOutputStream fostream = null;
+                        lastTokens.remove();
+                        lastTokens.add(SelectedToken.id);
+                        String[] lastTokensArr = lastTokens.toArray(new String[lastTokens.size()]);
+                        try {
+                            fostream = openFileOutput("recenttokens.txt", Context.MODE_PRIVATE);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            for (int i = 0; i < 5; i++) {
+                                fostream.write(((lastTokensArr[i]) + "\n").getBytes());
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            fostream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                        FileOutputStream fostream = null;
+                        lastTokens.add(SelectedToken.id);
+                        String[] lastTokensArr = lastTokens.toArray(new String[lastTokens.size()]);
+                        try {
+                            fostream = openFileOutput("recenttokens.txt", Context.MODE_PRIVATE);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            fostream.write((SelectedToken.id+"\n").getBytes());
+                            if (lastTokensArr.length > 1) {
+                                for (int i = 0; i < (lastTokensArr.length-1); i++) {
+                                    fostream.write((lastTokensArr[i] + "\n").getBytes());
+                                }
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            fostream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                scanner.close();
+            }
             databaseAccess.close();
+
         }
         else {
             disableButtons();
@@ -68,9 +186,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_selecttoken:
+            case R.id.menu_browsetokens:
                 Intent activityBrowse = new Intent(MainActivity.this, BrowseByActivity.class);
                 startActivity(activityBrowse);
+                return true;
+            case R.id.menu_recenttokens:
+                Intent activityRecent = new Intent(MainActivity.this, RecentTokensActivity.class);
+                startActivity(activityRecent);
                 return true;
             case R.id.menu_createtoken:
                 Intent activityCreateToken = new Intent(MainActivity.this, CreateTokenActivity.class);
@@ -156,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         updateText();
     }
 
-public void buttonClick(View view) {
+    public void buttonClick(View view) {
         switch(view.getId()) {
             case R.id.button_attackerInc:
                 tokens.incAttackers(); break;
@@ -197,7 +319,7 @@ public void buttonClick(View view) {
         }
 
         updateText();
-}
+    }
 
     public void expandAttackers(View view) {
         clearMenus(view);

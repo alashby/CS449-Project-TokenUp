@@ -40,6 +40,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".CreateTokenActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".RecentTokensActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

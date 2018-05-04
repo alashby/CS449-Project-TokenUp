@@ -9,5 +9,13 @@
     <item
         android:id="@+id/menu_selecttoken"
         android:title="Select Token"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/menu_browsetokens"
+                android:title="Browse Tokens" />
+            <item
+                android:id="@+id/menu_recenttokens"
+                android:title="Recently Used" />
+        </menu></item>
 </menu>
