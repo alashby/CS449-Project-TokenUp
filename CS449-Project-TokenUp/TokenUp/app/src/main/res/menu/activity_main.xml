@@ -3,13 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_help"
+        android:title="\?"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_createtoken"
         android:title="Create Token"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_selecttoken"
         android:title="Select Token"
-        app:showAsAction="ifRoom">
+        app:showAsAction="always">
         <menu>
             <item
                 android:id="@+id/menu_browsetokens"

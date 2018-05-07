@@ -52,6 +52,7 @@
         <activity
             android:name="com.github.cs449project.RecentTokensActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="com.github.cs449project.HelpActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

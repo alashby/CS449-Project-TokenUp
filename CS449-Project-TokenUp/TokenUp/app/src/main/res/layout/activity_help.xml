@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.cs449project.HelpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
+
+                <ImageView
+                    android:id="@+id/diagram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="400dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/helppage" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/diagram"
+                    android:text="1. View effects from other cards that affect current token.\n
+        2. Create a new token.\n
+        3. Current player's turn, either player's or opponent's.\n
+        4. Select a token by browsing categories, searching for specific attributes, or viewing recently used tokens.\n
+        5. Pass turn to opponent. Taps, removes summoning sickness, etc if necessary. Only usable when token is selected.\n
+        6. Begin new upkeep for yourself. Untaps, removes summoning sickness, etc if necessary. Only usable when token is selected.\n
+        7. Decrement total number of tokens in play. Only usable when token is selected.\n
+        8. Press 'total' to manually set the number of tokens and which phase they are in. Only usable when token is selected.\n
+        9. Counters for number of tokens in each phase. Also opens menus to decrement, increment, remove, and tap/untap tokens as necessary. The phases are,from left to right: attacking, blocking, ready, summoning sick, and tapped.\n
+        10. Increment total number of tokens in play. Only usable when token is selected." />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

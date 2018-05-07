@@ -103,6 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_numlabel"
         android:layout_toRightOf="@id/text_desclabel"
+        android:textColor="@color/colorPrimaryDark"
         android:visibility="gone" />
 
     <TextView
@@ -120,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_desc"
         android:layout_toRightOf="@id/text_srclabel"
+        android:textColor="@color/colorPrimaryDark"
         android:visibility="gone" />
 
     <Button

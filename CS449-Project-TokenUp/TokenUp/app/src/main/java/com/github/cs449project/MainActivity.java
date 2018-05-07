@@ -57,15 +57,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.background);
         tokens = new Tokens();
 
-        /*File recentTokensFile = getFileStreamPath("recenttokens.txt");
-        PrintWriter writer = null;
-        try {
-            writer = new PrintWriter(recentTokensFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        writer.print("");
-        writer.close();*/
 
         if (SelectedToken.img != null) {
             lastTokens = new LinkedList<String>();
@@ -198,6 +189,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent activityCreateToken = new Intent(MainActivity.this, CreateTokenActivity.class);
                 startActivity(activityCreateToken);
                 return true;
+            case R.id.menu_help:
+                Intent activityHelp = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(activityHelp);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -269,12 +264,16 @@ public class MainActivity extends AppCompatActivity {
     public void newUpkeep(View view) {
         clearMenus(view);
         tokens.newUpkeep();
+        TextView turntext = (TextView)findViewById(R.id.text_turn);
+        turntext.setText("Your Turn");
         updateText();
     }
 
     public void passTurn(View view) {
         clearMenus(view);
         tokens.opponentTurn();
+        TextView turntext = (TextView)findViewById(R.id.text_turn);
+        turntext.setText("Opponent Turn");
         updateText();
     }
 
@@ -288,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
                 tokens.kill("attackers"); break;
             case R.id.button_attackerTap:
                 tokens.tap("attackers"); break;
-
             case R.id.button_blockerInc:
                 tokens.incBlockers(); break;
             case R.id.button_blockerDec:

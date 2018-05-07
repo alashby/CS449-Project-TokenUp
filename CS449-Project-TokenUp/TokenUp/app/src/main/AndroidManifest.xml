@@ -41,7 +41,10 @@
         <activity
             android:name=".CreateTokenActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".RecentTokensActivity"
+        <activity
+            android:name=".RecentTokensActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HelpActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

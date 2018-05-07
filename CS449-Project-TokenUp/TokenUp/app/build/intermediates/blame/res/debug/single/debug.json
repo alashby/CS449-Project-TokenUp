@@ -152,6 +152,10 @@
         "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\drawable-hdpi\\ic_tapped.png"
     },
     {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\drawable-mdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
     },
@@ -384,6 +388,10 @@
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_helppage.png.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\drawable\\helppage.png"
+    },
+    {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_btn_colored_text_material.xml.flat",
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\color-v23\\abc_btn_colored_text_material.xml"
     },
@@ -530,6 +538,10 @@
     {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_multichoice_material.xml.flat",
@@ -784,6 +796,10 @@
         "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
     },
     {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main.xml.flat",
         "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\menu\\activity_main.xml"
     },
@@ -988,6 +1004,10 @@
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\color-v23\\abc_tint_edittext.xml"
     },
     {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_check_material.xml.flat",
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\drawable\\abc_btn_check_material.xml"
     },
@@ -1070,6 +1090,10 @@
     {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_seek_thumb.xml.flat",
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\color-v23\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1534,6 +1558,10 @@
     {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_grow_fade_in_from_bottom.xml.flat",
         "source": "C:\\Users\\Al\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\0721f9467e1c3b73cdb7cb047a48a56b\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_help.xml.flat",
+        "source": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\src\\main\\res\\layout\\activity_help.xml"
     },
     {
         "merged": "C:\\Users\\Al\\Documents\\GitHub\\CS449-Project-2\\CS449-Project-TokenUp\\TokenUp\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
